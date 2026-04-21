@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import { renderRegister } from './pages/register';
+import { renderLogin } from './pages/login';
 
 const app = document.getElementById('app')!;
-renderRegister(app);
+renderLogin(app);
