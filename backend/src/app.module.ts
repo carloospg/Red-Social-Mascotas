@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule} from '@nestjs/mongoose';
+import { UsersModule } from './users/users.module';
 
 // Lo hago asi en vez de la manera que hay en los apuntes porque asi lee la URI desde el .env usando ConfigService 
 // y asi el codigo no tiene ninguna credencial, de la otra forma estaba hardcodeada y quedaban expuestas las credenciales, 
@@ -17,7 +18,8 @@ import { MongooseModule} from '@nestjs/mongoose';
         uri: configService.get<string>('MONGODB_URI'),
       }),
       inject: [ConfigService]
-    })
+    }),
+    UsersModule
   ],
 })
 export class AppModule {}
