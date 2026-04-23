@@ -135,7 +135,7 @@ async function cargarMisMascotas(): Promise<void> {
       <div class="col-md-3 col-sm-6">
         <div class="card border-0 shadow rounded-4 h-100" style="background: #e0e0e0;">
           <div class="p-3">
-            <div class="rounded-3 overflow-hidden" style="height: 180px; background: #bdbdbd;">
+            <div class="rounded-3 overflow-hidden" style="height: 250px; background: #bdbdbd;">
               ${
                 m.urlFoto
                   ? `<img src="${m.urlFoto}" class="w-100 h-100" style="object-fit: cover;" />`
