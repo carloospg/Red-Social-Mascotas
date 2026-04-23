@@ -35,12 +35,12 @@ export function initNavbar(paginaActiva: string): void {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link ${paginaActiva === "home" ? "active" : ""}" href="#" id="nav-mascotas">
+              <a class="nav-link ${paginaActiva === "todas-mascotas" ? "active" : ""}" href="#" id="nav-mascotas">
                 <i class="bi bi-grid me-1"></i> Todas las mascotas
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link ${paginaActiva === "mis-mascotas" ? "active" : ""}" href="./misMascotas.ts" id="nav-mis-mascotas">
+              <a class="nav-link ${paginaActiva === "mis-mascotas" ? "active" : ""}" href="#" id="nav-mis-mascotas">
                 <i class="bi bi-heart me-1"></i> Mis mascotas
               </a>
             </li>
@@ -51,12 +51,6 @@ export function initNavbar(paginaActiva: string): void {
               🐶 ${usuario.nombre}
             </button>
             <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
-              <li>
-                <span class="dropdown-item py-2">
-                  <i class="bi bi-person-badge me-2 text-dark"></i>${usuario.nombre}
-                </span>
-              </li>
-              <li><hr class="dropdown-divider"></li>
               <li>
                 <button class="dropdown-item py-2 text-danger fw-bold" id="btn-logout-nav">
                   <i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión
@@ -71,6 +65,32 @@ export function initNavbar(paginaActiva: string): void {
 
   const contenedor = document.getElementById("navbar-container");
   if (contenedor) contenedor.innerHTML = navbarHTML;
+
+  document.getElementById("nav-mascotas")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    import("../pages/todasMascotas").then(({ renderTodasMascotas }) => {
+      const app = document.getElementById("app")!;
+      renderTodasMascotas(app);
+    });
+  });
+
+  document
+    .getElementById("nav-mis-mascotas")
+    ?.addEventListener("click", (e) => {
+      e.preventDefault();
+      import("../pages/misMascotas").then(({ renderMisMascotas }) => {
+        const app = document.getElementById("app")!;
+        renderMisMascotas(app);
+      });
+    });
+
+  document.getElementById("nav-home")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    import("../pages/todasMascotas").then(({ renderTodasMascotas }) => {
+      const app = document.getElementById("app")!;
+      renderTodasMascotas(app);
+    });
+  });
 
   document.getElementById("btn-logout-nav")?.addEventListener("click", () => {
     sessionStorage.removeItem("token");
