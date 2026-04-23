@@ -45,11 +45,13 @@ export function renderLogin(root: HTMLElement): void {
       });
       const { access_token, user } = response.data;
 
-      localStorage.setItem("token", access_token);
-      localStorage.setItem("user", JSON.stringify(user));
+      sessionStorage.setItem("token", access_token);
+      sessionStorage.setItem("user", JSON.stringify(user));
 
-      // Aquí navegaremos al home en siguientes HUs
-      alert(`Bienvenido ${user.name}!`);
+      import("./misMascotas").then(({ renderMisMascotas }) => {
+        const app = document.getElementById("app")!;
+        renderMisMascotas(app);
+      });
     } catch (error: any) {
       errorMsg.classList.remove("d-none");
       errorMsg.textContent =

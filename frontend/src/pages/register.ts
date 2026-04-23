@@ -12,7 +12,7 @@ export function renderRegister(root: HTMLElement): void {
             <form id="register-form">
               <div class="mb-3">
                 <label class="form-label">Nombre</label>
-                <input type="text" id="name" class="form-control" placeholder="Tu nombre" required />
+                <input type="text" id="nombre" class="form-control" placeholder="Tu nombre" required />
               </div>
               <div class="mb-3">
                 <label class="form-label">Email</label>
@@ -35,37 +35,44 @@ export function renderRegister(root: HTMLElement): void {
   const form = document.getElementById("register-form")!;
   const errorMsg = document.getElementById("error-msg")!;
 
-  document.getElementById("go-login")!.addEventListener("click", (e) => {
-    e.preventDefault();
-    import("./login").then(({ renderLogin }) => renderLogin(root));
-  });
-
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const name = (document.getElementById("name") as HTMLInputElement).value;
+    const nombre = (document.getElementById("nombre") as HTMLInputElement)
+      .value;
     const email = (document.getElementById("email") as HTMLInputElement).value;
     const password = (document.getElementById("password") as HTMLInputElement)
       .value;
 
     try {
-      await axios.post(`${API_URL}/users/register`, { name, email, password });
+      await axios.post(`${API_URL}/users/register`, {
+        nombre,
+        email,
+        password,
+      });
 
-      // Login automático tras registro
       const response = await axios.post(`${API_URL}/auth/login`, {
         email,
         password,
       });
       const { access_token, user } = response.data;
 
-      localStorage.setItem("token", access_token);
-      localStorage.setItem("user", JSON.stringify(user));
+      sessionStorage.setItem("token", access_token);
+      sessionStorage.setItem("user", JSON.stringify(user));
 
-      alert(`Bienvenido ${user.name}!`);
+      import("./misMascotas").then(({ renderMisMascotas }) => {
+        const app = document.getElementById("app")!;
+        renderMisMascotas(app);
+      });
     } catch (error: any) {
       errorMsg.classList.remove("d-none");
       errorMsg.textContent =
         error.response?.data?.message || "Error al registrarse";
     }
+  });
+
+  document.getElementById("go-login")!.addEventListener("click", (e) => {
+    e.preventDefault();
+    import("./login").then(({ renderLogin }) => renderLogin(root));
   });
 }
