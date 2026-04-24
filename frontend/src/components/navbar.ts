@@ -12,17 +12,6 @@ export function initNavbar(paginaActiva: string): void {
 
   const usuario = JSON.parse(userString);
 
-  const linkAdmin =
-    usuario.rol === "admin"
-      ? `
-    <li class="nav-item">
-      <a class="nav-link ${paginaActiva === "usuarios" ? "active" : ""}" href="#" id="nav-usuarios">
-        <i class="bi bi-people-fill me-1"></i> Usuarios
-      </a>
-    </li>
-    `
-      : "";
-
   const navbarHTML = `
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
       <div class="container-fluid px-4">
@@ -44,7 +33,6 @@ export function initNavbar(paginaActiva: string): void {
                 <i class="bi bi-heart me-1"></i> Mis mascotas
               </a>
             </li>
-            ${linkAdmin}
           </ul>
           <div class="dropdown">
             <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
