@@ -8,6 +8,8 @@ import {
   UseGuards,
   UploadedFile,
   UseInterceptors,
+  Patch,
+  Delete,
 } from "@nestjs/common";
 import { MascotasService } from "./mascotas.service";
 import { CreateMascotaDto } from "./dto/create-mascota.dto";
@@ -15,6 +17,7 @@ import { AuthGuard } from "@nestjs/passport";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { CloudinaryService } from "src/cloudinary/cloudinary.service";
 import { memoryStorage } from "multer";
+import { UpdateMascotaDto } from "./dto/update-mascota.dto";
 
 @Controller("mascotas")
 @UseGuards(AuthGuard("jwt"))
@@ -51,5 +54,25 @@ export class MascotasController {
   @Get(":id")
   async findOne(@Param("id") id: string) {
     return this.mascotasService.findOne(id);
+  }
+
+  @Patch(":id")
+  @UseInterceptors(FileInterceptor("foto", { storage: memoryStorage() }))
+  async update(
+    @Param("id") id: string,
+    @Body() updateMascotaDto: UpdateMascotaDto,
+    @Request() req: any,
+    @UploadedFile() file?: Express.Multer.File,
+  ) {
+    let urlFoto = "";
+    if (file) {
+      urlFoto = await this.cloudinaryService.uploadImage(file);
+    }
+    return this.mascotasService.update(id, updateMascotaDto, req.user, urlFoto);
+  }
+
+  @Delete(":id")
+  async delete(@Param("id") id: string, @Request() req: any) {
+    return this.mascotasService.delete(id, req.user);
   }
 }
