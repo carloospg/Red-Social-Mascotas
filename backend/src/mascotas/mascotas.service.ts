@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   ForbiddenException,
   Injectable,
   NotFoundException,
@@ -79,7 +80,7 @@ export class MascotasService {
     }
 
     return await this.mascotaModel.findByIdAndUpdate(id, updateData, {
-      new: true,
+      returnDocument: "after",
     });
   }
 
@@ -100,5 +101,77 @@ export class MascotasService {
     }
 
     await this.mascotaModel.findByIdAndDelete(id);
+  }
+
+  async darLike(id: string, user: User): Promise<Mascota | null> {
+    const mascota = await this.mascotaModel.findById(id);
+
+    if (!mascota) {
+      throw new NotFoundException("Mascota no encontrada");
+    }
+
+    const yaHaDadoLike = mascota.likesDados.some( //some recorre el array y devuelve true si al menos un elemento cumple la condicion, si no la comple devuelve false
+      (userId) => userId.toString() === user._id.toString(),
+    );
+
+    if (yaHaDadoLike) {
+      return await this.mascotaModel.findByIdAndUpdate(
+        id,
+        {
+          $inc: { contadorLikes: -1 },
+          $pull: {
+            likesDados: user._id,
+            historialLikes: { usuario: user._id },
+          },
+        },
+        { returnDocument: "after" },
+      );
+    } else {
+      return await this.mascotaModel.findByIdAndUpdate(
+        id,
+        {
+          $inc: { contadorLikes: 1 },
+          $push: {
+            likesDados: user._id,
+            historialLikes: { usuario: user._id, fecha: new Date() },
+          },
+        },
+        { returnDocument: "after" },
+      );
+    }
+  }
+
+  async comentar(
+    id: string,
+    texto: string,
+    user: User,
+  ): Promise<Mascota | null> {
+    const mascota = await this.mascotaModel.findById(id);
+
+    if (!mascota) {
+      throw new NotFoundException("Mascota no encontrada");
+    }
+
+    return await this.mascotaModel.findByIdAndUpdate(
+      id,
+      {
+        $push: {
+          comentarios: { usuario: user._id, texto, fecha: new Date() },
+        },
+      },
+      { returnDocument: "after" },
+    );
+  }
+
+  async getComentarios(id: string): Promise<any[]> {
+    const mascota = await this.mascotaModel
+      .findById(id)
+      .populate("comentarios.usuario", "nombre");
+
+    if (!mascota) {
+      throw new NotFoundException("Mascota no encontrada");
+    }
+
+    return mascota.comentarios;
   }
 }

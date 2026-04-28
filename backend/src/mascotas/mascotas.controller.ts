@@ -75,4 +75,23 @@ export class MascotasController {
   async delete(@Param("id") id: string, @Request() req: any) {
     return this.mascotasService.delete(id, req.user);
   }
+
+  @Post(":id/like")
+  async darLike(@Param("id") id: string, @Request() req: any) {
+    return this.mascotasService.darLike(id, req.user);
+  }
+
+  @Post(":id/comentarios")
+  async comentar(
+    @Param("id") id: string,
+    @Body("texto") texto: string,
+    @Request() req: any,
+  ) {
+    return this.mascotasService.comentar(id, texto, req.user);
+  }
+
+  @Get(":id/comentarios")
+  async getComentarios(@Param("id") id: string) {
+    return this.mascotasService.getComentarios(id);
+  }
 }
