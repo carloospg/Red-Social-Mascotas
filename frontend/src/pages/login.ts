@@ -55,7 +55,9 @@ export function renderLogin(root: HTMLElement): void {
     } catch (error: any) {
       errorMsg.classList.remove("d-none");
       errorMsg.textContent =
-        error.response?.data?.message || "Error al iniciar sesión";
+        error.response?.status === 401
+          ? "El correo o la contraseña no son correctos"
+          : error.response?.data?.message || "Error del servidor";
     }
   });
 
