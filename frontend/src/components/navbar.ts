@@ -13,7 +13,7 @@ export function initNavbar(paginaActiva: string): void {
   const usuario = JSON.parse(userString);
 
   const navbarHTML = `
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top">
       <div class="container-fluid px-4">
         <a class="navbar-brand fw-bold" href="#" id="nav-home">
           🐾 Red Social Mascotas
