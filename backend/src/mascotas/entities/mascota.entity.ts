@@ -25,9 +25,32 @@ export class Mascota extends Document {
   @Prop({ type: [{ type: Types.ObjectId, ref: User.name }], default: [] })
   likesDados: Types.ObjectId[];
 
+  @Prop({
+    type: [
+      {
+        usuario: { type: Types.ObjectId, ref: User.name },
+        fecha: { type: Date, default: Date.now },
+      },
+    ],
+    default: [],
+  })
+  historialLikes: { usuario: Types.ObjectId; fecha: Date }[];
+
+  @Prop({
+    type: [
+      {
+        usuario: { type: Types.ObjectId, ref: User.name },
+        texto: { type: String, required: true },
+        fecha: { type: Date, default: Date.now },
+      },
+    ],
+    default: [],
+  })
+  comentarios: { usuario: Types.ObjectId; texto: string; fecha: Date }[];
+
   @Prop({})
   urlFoto: string;
 }
 
 export const MascotaSchema = SchemaFactory.createForClass(Mascota);
-MascotaSchema.set('versionKey', false);
+MascotaSchema.set("versionKey", false);

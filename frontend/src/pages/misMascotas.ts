@@ -6,7 +6,7 @@ const API_URL = "http://localhost:3001/api";
 export function renderMisMascotas(root: HTMLElement): void {
   root.innerHTML = `
     <div id="navbar-container"></div>
-    <div class="container mt-4">
+    <div class="container mt-4" style="padding-top: 70px; padding-bottom: 40px;">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h4 class="fw-bold">Mis Mascotas</h4>
         <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalAddMascota">
@@ -110,95 +110,118 @@ export function renderMisMascotas(root: HTMLElement): void {
 
   const token = sessionStorage.getItem("token");
 
-  // Submit crear mascota
-  document.getElementById("form-add-mascota")!.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  document
+    .getElementById("form-add-mascota")!
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nombre = (
+        document.getElementById("mascota-nombre") as HTMLInputElement
+      ).value;
+      const especie = (
+        document.getElementById("mascota-especie") as HTMLInputElement
+      ).value;
+      const edad = Number(
+        (document.getElementById("mascota-edad") as HTMLInputElement).value,
+      );
+      const descripcion = (
+        document.getElementById("mascota-descripcion") as HTMLTextAreaElement
+      ).value;
+      const fotoInput = document.getElementById(
+        "mascota-foto",
+      ) as HTMLInputElement;
+      const errorMsg = document.getElementById("error-mascota")!;
 
-    const nombre = (document.getElementById("mascota-nombre") as HTMLInputElement).value;
-    const especie = (document.getElementById("mascota-especie") as HTMLInputElement).value;
-    const edad = Number((document.getElementById("mascota-edad") as HTMLInputElement).value);
-    const descripcion = (document.getElementById("mascota-descripcion") as HTMLTextAreaElement).value;
-    const fotoInput = document.getElementById("mascota-foto") as HTMLInputElement;
-    const errorMsg = document.getElementById("error-mascota")!;
+      try {
+        const formData = new FormData();
+        formData.append("nombre", nombre);
+        formData.append("especie", especie);
+        formData.append("edad", String(edad));
+        formData.append("descripcion", descripcion);
+        if (fotoInput.files && fotoInput.files[0])
+          formData.append("foto", fotoInput.files[0]);
 
-    try {
-      const formData = new FormData();
-      formData.append("nombre", nombre);
-      formData.append("especie", especie);
-      formData.append("edad", String(edad));
-      formData.append("descripcion", descripcion);
-
-      if (fotoInput.files && fotoInput.files[0]) {
-        formData.append("foto", fotoInput.files[0]);
+        await axios.post(`${API_URL}/mascotas`, formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        window.location.reload();
+      } catch (error: any) {
+        errorMsg.classList.remove("d-none");
+        errorMsg.textContent =
+          error.response?.data?.message || "Error al crear la mascota";
       }
+    });
 
-      await axios.post(`${API_URL}/mascotas`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+  document
+    .getElementById("form-edit-mascota")!
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const id = (
+        document.getElementById("edit-mascota-id") as HTMLInputElement
+      ).value;
+      const nombre = (
+        document.getElementById("edit-mascota-nombre") as HTMLInputElement
+      ).value;
+      const especie = (
+        document.getElementById("edit-mascota-especie") as HTMLInputElement
+      ).value;
+      const edad = Number(
+        (document.getElementById("edit-mascota-edad") as HTMLInputElement)
+          .value,
+      );
+      const descripcion = (
+        document.getElementById(
+          "edit-mascota-descripcion",
+        ) as HTMLTextAreaElement
+      ).value;
+      const fotoInput = document.getElementById(
+        "edit-mascota-foto",
+      ) as HTMLInputElement;
+      const errorMsg = document.getElementById("error-edit-mascota")!;
 
-      window.location.reload();
-    } catch (error: any) {
-      errorMsg.classList.remove("d-none");
-      errorMsg.textContent = error.response?.data?.message || "Error al crear la mascota";
-    }
-  });
+      try {
+        const formData = new FormData();
+        formData.append("nombre", nombre);
+        formData.append("especie", especie);
+        formData.append("edad", String(edad));
+        formData.append("descripcion", descripcion);
+        if (fotoInput.files && fotoInput.files[0])
+          formData.append("foto", fotoInput.files[0]);
 
-  // Submit editar mascota
-  document.getElementById("form-edit-mascota")!.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const id = (document.getElementById("edit-mascota-id") as HTMLInputElement).value;
-    const nombre = (document.getElementById("edit-mascota-nombre") as HTMLInputElement).value;
-    const especie = (document.getElementById("edit-mascota-especie") as HTMLInputElement).value;
-    const edad = Number((document.getElementById("edit-mascota-edad") as HTMLInputElement).value);
-    const descripcion = (document.getElementById("edit-mascota-descripcion") as HTMLTextAreaElement).value;
-    const fotoInput = document.getElementById("edit-mascota-foto") as HTMLInputElement;
-    const errorMsg = document.getElementById("error-edit-mascota")!;
-
-    try {
-      const formData = new FormData();
-      formData.append("nombre", nombre);
-      formData.append("especie", especie);
-      formData.append("edad", String(edad));
-      formData.append("descripcion", descripcion);
-
-      if (fotoInput.files && fotoInput.files[0]) {
-        formData.append("foto", fotoInput.files[0]);
+        await axios.patch(`${API_URL}/mascotas/${id}`, formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        window.location.reload();
+      } catch (error: any) {
+        errorMsg.classList.remove("d-none");
+        errorMsg.textContent =
+          error.response?.data?.message || "Error al editar la mascota";
       }
+    });
 
-      await axios.patch(`${API_URL}/mascotas/${id}`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+  document
+    .getElementById("btn-delete-mascota")!
+    .addEventListener("click", async () => {
+      const id = (
+        document.getElementById("edit-mascota-id") as HTMLInputElement
+      ).value;
+      if (!confirm("¿Estás seguro de que quieres eliminar esta mascota?"))
+        return;
 
-      window.location.reload();
-    } catch (error: any) {
-      errorMsg.classList.remove("d-none");
-      errorMsg.textContent = error.response?.data?.message || "Error al editar la mascota";
-    }
-  });
-
-  // Eliminar mascota
-  document.getElementById("btn-delete-mascota")!.addEventListener("click", async () => {
-    const id = (document.getElementById("edit-mascota-id") as HTMLInputElement).value;
-
-    if (!confirm("¿Estás seguro de que quieres eliminar esta mascota?")) return;
-
-    try {
-      await axios.delete(`${API_URL}/mascotas/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      window.location.reload();
-    } catch (error: any) {
-      alert("Error al eliminar la mascota");
-    }
-  });
+      try {
+        await axios.delete(`${API_URL}/mascotas/${id}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        window.location.reload();
+      } catch (error: any) {
+        alert("Error al eliminar la mascota");
+      }
+    });
 }
 
 async function cargarMisMascotas(): Promise<void> {
@@ -217,26 +240,31 @@ async function cargarMisMascotas(): Promise<void> {
       return;
     }
 
-    contenedor.innerHTML = mascotas.map((m: any) => `
+    contenedor.innerHTML = mascotas
+      .map(
+        (m: any) => `
       <div class="col-md-3 col-sm-6">
-        <div
-          class="card border-0 shadow rounded-4 h-100 btn-editar-mascota"
-          style="background: #e0e0e0; cursor: pointer;"
-          data-bs-toggle="modal"
-          data-bs-target="#modalEditMascota"
-          data-id="${m._id}"
-          data-nombre="${m.nombre}"
-          data-especie="${m.especie}"
-          data-edad="${m.edad}"
-          data-descripcion="${m.descripcion || ''}"
-        >
-          <div class="p-3">
+        <div class="card border-0 shadow rounded-4 h-100" style="background: #e0e0e0;">
+          <div class="p-3 position-relative">
             <div class="rounded-3 overflow-hidden" style="height: 250px; background: #bdbdbd;">
-              ${m.urlFoto
-                ? `<img src="${m.urlFoto}" class="w-100 h-100" style="object-fit: cover;" />`
-                : `<div class="w-100 h-100 d-flex align-items-center justify-content-center text-secondary fw-bold">SIN FOTO</div>`
+              ${
+                m.urlFoto
+                  ? `<img src="${m.urlFoto}" class="w-100 h-100" style="object-fit: cover;" />`
+                  : `<div class="w-100 h-100 d-flex align-items-center justify-content-center text-secondary fw-bold">SIN FOTO</div>`
               }
             </div>
+            <button
+              class="btn btn-dark btn-sm position-absolute top-0 end-0 m-3 btn-editar-mascota"
+              data-bs-toggle="modal"
+              data-bs-target="#modalEditMascota"
+              data-id="${m._id}"
+              data-nombre="${m.nombre}"
+              data-especie="${m.especie}"
+              data-edad="${m.edad}"
+              data-descripcion="${m.descripcion || ""}"
+            >
+              <i class="bi bi-pencil"></i>
+            </button>
           </div>
           <div class="card-body pt-0 text-center">
             <h6 class="fw-bold text-uppercase">${m.nombre}</h6>
@@ -248,25 +276,37 @@ async function cargarMisMascotas(): Promise<void> {
               </span>
               <span class="d-flex align-items-center gap-1">
                 <i class="bi bi-chat-fill text-dark"></i>
-                <span>0</span>
+                <span>${m.comentarios?.length || 0}</span>
               </span>
             </div>
           </div>
         </div>
       </div>
-    `).join("");
+    `,
+      )
+      .join("");
 
     document.querySelectorAll(".btn-editar-mascota").forEach((btn) => {
       btn.addEventListener("click", () => {
         const el = btn as HTMLElement;
-        (document.getElementById("edit-mascota-id") as HTMLInputElement).value = el.dataset.id!;
-        (document.getElementById("edit-mascota-nombre") as HTMLInputElement).value = el.dataset.nombre!;
-        (document.getElementById("edit-mascota-especie") as HTMLInputElement).value = el.dataset.especie!;
-        (document.getElementById("edit-mascota-edad") as HTMLInputElement).value = el.dataset.edad!;
-        (document.getElementById("edit-mascota-descripcion") as HTMLTextAreaElement).value = el.dataset.descripcion!;
+        (document.getElementById("edit-mascota-id") as HTMLInputElement).value =
+          el.dataset.id!;
+        (
+          document.getElementById("edit-mascota-nombre") as HTMLInputElement
+        ).value = el.dataset.nombre!;
+        (
+          document.getElementById("edit-mascota-especie") as HTMLInputElement
+        ).value = el.dataset.especie!;
+        (
+          document.getElementById("edit-mascota-edad") as HTMLInputElement
+        ).value = el.dataset.edad!;
+        (
+          document.getElementById(
+            "edit-mascota-descripcion",
+          ) as HTMLTextAreaElement
+        ).value = el.dataset.descripcion!;
       });
     });
-
   } catch (error) {
     contenedor.innerHTML = `<p class="text-danger">No hay mascotas</p>`;
   }

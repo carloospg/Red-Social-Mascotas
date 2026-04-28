@@ -3,11 +3,11 @@ import { AuthService } from "./auth.service";
 import { IsEmail, IsString, MinLength } from "class-validator";
 
 export class LoginDto {
-  @IsEmail()
+  @IsEmail({}, { message: 'El email no es valido' })
   email: string;
 
-  @IsString()
-  @MinLength(6)
+  @IsString({ message: 'La contraseña no es valida' })
+  @MinLength(6, { message: 'La contraseña debe tener minimo 6 caracteres' })
   password: string;
 }
 
