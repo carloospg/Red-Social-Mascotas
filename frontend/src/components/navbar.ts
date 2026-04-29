@@ -33,6 +33,11 @@ export function initNavbar(paginaActiva: string): void {
                 <i class="bi bi-heart me-1"></i> Mis mascotas
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link ${paginaActiva === "ranking" ? "active" : ""}" href="#" id="nav-ranking">
+                <i class="bi bi-trophy me-1"></i> Ranking
+              </a>
+            </li>
           </ul>
           <div class="dropdown">
             <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
@@ -77,6 +82,14 @@ export function initNavbar(paginaActiva: string): void {
     import("../pages/todasMascotas").then(({ renderTodasMascotas }) => {
       const app = document.getElementById("app")!;
       renderTodasMascotas(app);
+    });
+  });
+
+  document.getElementById("nav-ranking")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    import("../pages/ranking").then(({ renderRanking }) => {
+      const app = document.getElementById("app")!;
+      renderRanking(app);
     });
   });
 
