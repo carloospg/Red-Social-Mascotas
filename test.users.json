@@ -1,0 +1,45 @@
+[{
+  "_id": {
+    "$oid": "69e8decab6f953d62bf536be"
+  },
+  "nombre": "Carlos",
+  "email": "carlos@mascotas.com",
+  "password": "$2b$10$JFjgM37wQtw.EmtfnO/WEunVLyqEGlIY3OBhl.Nj0X2KSGBXJkOUe",
+  "rol": "user",
+  "createdAt": {
+    "$date": "2026-04-22T14:44:26.798Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-22T14:44:26.798Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69ea3b2a570199bcff7fa8d4"
+  },
+  "nombre": "Usuario",
+  "email": "usuario@mascota.com",
+  "password": "$2b$10$gus0v1GNx3GIfk7BvCnCdOFbo.fXRKQnQgfzv7V.GAgT0AG3WIBFm",
+  "rol": "user",
+  "createdAt": {
+    "$date": "2026-04-23T15:30:50.699Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-23T15:30:50.699Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69eb47c92fe3ee79570c7bf3"
+  },
+  "nombre": "Admin",
+  "email": "admin@admin.com",
+  "password": "$2b$10$N1D27O837DI1G9rF8jXHqu0kPNRiSokBey79ZhCGbjUPXi1xtwp6e",
+  "rol": "admin",
+  "createdAt": {
+    "$date": "2026-04-24T10:36:57.488Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-24T10:36:57.488Z"
+  }
+}]

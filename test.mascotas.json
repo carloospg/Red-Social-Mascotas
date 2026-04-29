@@ -1,0 +1,719 @@
+[{
+  "_id": {
+    "$oid": "69ea0c33514a8a80ee0cec68"
+  },
+  "nombre": "Choco",
+  "especie": "perro",
+  "edad": 11,
+  "descripcion": "Esta gordo",
+  "propietario": {
+    "$oid": "69e8decab6f953d62bf536be"
+  },
+  "contadorLikes": 3,
+  "likesDados": [
+    {
+      "$oid": "69ea3b2a570199bcff7fa8d4"
+    },
+    {
+      "$oid": "69eb47c92fe3ee79570c7bf3"
+    },
+    {
+      "$oid": "69e8decab6f953d62bf536be"
+    }
+  ],
+  "urlFoto": "https://res.cloudinary.com/dgznikiob/image/upload/v1776946226/mascotas/neojehcqiz3xelnvlp8h.jpg",
+  "createdAt": {
+    "$date": "2026-04-23T12:10:27.482Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-29T14:39:25.167Z"
+  },
+  "historialLikes": [
+    {
+      "usuario": {
+        "$oid": "69ea3b2a570199bcff7fa8d4"
+      },
+      "fecha": {
+        "$date": "2026-04-28T12:04:19.320Z"
+      },
+      "_id": {
+        "$oid": "69f0a243f2fd65e043b73976"
+      }
+    },
+    {
+      "usuario": {
+        "$oid": "69eb47c92fe3ee79570c7bf3"
+      },
+      "fecha": {
+        "$date": "2026-04-28T12:07:14.615Z"
+      },
+      "_id": {
+        "$oid": "69f0a2f23b79ead145f16165"
+      }
+    },
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:39:25.167Z"
+      },
+      "_id": {
+        "$oid": "69f2181da0a7668b7e1d80e4"
+      }
+    }
+  ],
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "texto": "que gordo",
+      "fecha": {
+        "$date": "2026-04-28T12:01:52.013Z"
+      },
+      "_id": {
+        "$oid": "69f0a1b0f2fd65e043b7395c"
+      }
+    },
+    {
+      "usuario": {
+        "$oid": "69eb47c92fe3ee79570c7bf3"
+      },
+      "texto": "miralo como duerme jajajaja",
+      "fecha": {
+        "$date": "2026-04-29T14:18:56.921Z"
+      },
+      "_id": {
+        "$oid": "69f21350a0a7668b7e1d7dd3"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "69f21330a0a7668b7e1d7dba"
+  },
+  "nombre": "Luna",
+  "especie": "gato",
+  "edad": 2,
+  "descripcion": "",
+  "propietario": {
+    "$oid": "69eb47c92fe3ee79570c7bf3"
+  },
+  "contadorLikes": 2,
+  "likesDados": [
+    {
+      "$oid": "69ea3b2a570199bcff7fa8d4"
+    },
+    {
+      "$oid": "69e8decab6f953d62bf536be"
+    }
+  ],
+  "urlFoto": "https://res.cloudinary.com/dgznikiob/image/upload/v1777472304/mascotas/nygjdi2hlzus7amxlwch.png",
+  "historialLikes": [
+    {
+      "usuario": {
+        "$oid": "69ea3b2a570199bcff7fa8d4"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:27:31.505Z"
+      },
+      "_id": {
+        "$oid": "69f21553a0a7668b7e1d7e46"
+      }
+    },
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:40:24.789Z"
+      },
+      "_id": {
+        "$oid": "69f21858a0a7668b7e1d81bd"
+      }
+    }
+  ],
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "texto": "parece que te esta pidiendo de tu comida",
+      "fecha": {
+        "$date": "2026-04-29T14:40:42.574Z"
+      },
+      "_id": {
+        "$oid": "69f2186aa0a7668b7e1d81c4"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-04-29T14:18:24.914Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-29T14:40:42.574Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69f21394a0a7668b7e1d7ded"
+  },
+  "nombre": "Mochi",
+  "especie": "gato",
+  "edad": 5,
+  "descripcion": "",
+  "propietario": {
+    "$oid": "69eb47c92fe3ee79570c7bf3"
+  },
+  "contadorLikes": 1,
+  "likesDados": [
+    {
+      "$oid": "69e8decab6f953d62bf536be"
+    }
+  ],
+  "urlFoto": "https://res.cloudinary.com/dgznikiob/image/upload/v1777472403/mascotas/sxeg4m8phxhxciyyxuwt.jpg",
+  "historialLikes": [
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:41:15.953Z"
+      },
+      "_id": {
+        "$oid": "69f2188ba0a7668b7e1d81e7"
+      }
+    }
+  ],
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "texto": "en que pensará?",
+      "fecha": {
+        "$date": "2026-04-29T14:41:23.164Z"
+      },
+      "_id": {
+        "$oid": "69f21893a0a7668b7e1d81eb"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-04-29T14:20:04.736Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-29T14:41:23.164Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69f213a7a0a7668b7e1d7df3"
+  },
+  "nombre": "Bimbo",
+  "especie": "gato",
+  "edad": 1,
+  "descripcion": "",
+  "propietario": {
+    "$oid": "69eb47c92fe3ee79570c7bf3"
+  },
+  "contadorLikes": 1,
+  "likesDados": [
+    {
+      "$oid": "69eb47c92fe3ee79570c7bf3"
+    }
+  ],
+  "urlFoto": "https://res.cloudinary.com/dgznikiob/image/upload/v1777472421/mascotas/rhxss49k1huxwneniv6g.jpg",
+  "historialLikes": [
+    {
+      "usuario": {
+        "$oid": "69eb47c92fe3ee79570c7bf3"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:33:34.656Z"
+      },
+      "_id": {
+        "$oid": "69f216bea0a7668b7e1d7edc"
+      }
+    }
+  ],
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "69eb47c92fe3ee79570c7bf3"
+      },
+      "texto": "jajaja se llama como el pan",
+      "fecha": {
+        "$date": "2026-04-29T14:33:43.998Z"
+      },
+      "_id": {
+        "$oid": "69f216c7a0a7668b7e1d7ee0"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-04-29T14:20:23.143Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-29T14:33:43.998Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69f213f2a0a7668b7e1d7df9"
+  },
+  "nombre": "Coco",
+  "especie": "perro",
+  "edad": 7,
+  "descripcion": "",
+  "propietario": {
+    "$oid": "69eb47c92fe3ee79570c7bf3"
+  },
+  "contadorLikes": 1,
+  "likesDados": [
+    {
+      "$oid": "69eb47c92fe3ee79570c7bf3"
+    }
+  ],
+  "urlFoto": "https://res.cloudinary.com/dgznikiob/image/upload/v1777472497/mascotas/t7ro8e1hjuf5pjwdv8nr.jpg",
+  "historialLikes": [
+    {
+      "usuario": {
+        "$oid": "69eb47c92fe3ee79570c7bf3"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:33:03.849Z"
+      },
+      "_id": {
+        "$oid": "69f2169fa0a7668b7e1d7ec5"
+      }
+    }
+  ],
+  "comentarios": [],
+  "createdAt": {
+    "$date": "2026-04-29T14:21:38.283Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-29T14:33:03.849Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69f21438a0a7668b7e1d7e09"
+  },
+  "nombre": "Bizcochito",
+  "especie": "perro",
+  "edad": 3,
+  "descripcion": "No muerde",
+  "propietario": {
+    "$oid": "69e8decab6f953d62bf536be"
+  },
+  "contadorLikes": 3,
+  "likesDados": [
+    {
+      "$oid": "69ea3b2a570199bcff7fa8d4"
+    },
+    {
+      "$oid": "69eb47c92fe3ee79570c7bf3"
+    },
+    {
+      "$oid": "69e8decab6f953d62bf536be"
+    }
+  ],
+  "urlFoto": "https://res.cloudinary.com/dgznikiob/image/upload/v1777472567/mascotas/aj6syyokf15fcvu9tfxy.jpg",
+  "historialLikes": [
+    {
+      "usuario": {
+        "$oid": "69ea3b2a570199bcff7fa8d4"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:27:33.411Z"
+      },
+      "_id": {
+        "$oid": "69f21555a0a7668b7e1d7e4a"
+      }
+    },
+    {
+      "usuario": {
+        "$oid": "69eb47c92fe3ee79570c7bf3"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:33:05.031Z"
+      },
+      "_id": {
+        "$oid": "69f216a1a0a7668b7e1d7ec9"
+      }
+    },
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:39:20.702Z"
+      },
+      "_id": {
+        "$oid": "69f21818a0a7668b7e1d80a4"
+      }
+    }
+  ],
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "69ea3b2a570199bcff7fa8d4"
+      },
+      "texto": "se deja acariciar?",
+      "fecha": {
+        "$date": "2026-04-29T14:27:42.183Z"
+      },
+      "_id": {
+        "$oid": "69f2155ea0a7668b7e1d7e4e"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-04-29T14:22:48.392Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-29T14:39:20.702Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69f214bba0a7668b7e1d7e14"
+  },
+  "nombre": "Destructor de mundos",
+  "especie": "perro",
+  "edad": 4,
+  "descripcion": "",
+  "propietario": {
+    "$oid": "69e8decab6f953d62bf536be"
+  },
+  "contadorLikes": 2,
+  "likesDados": [
+    {
+      "$oid": "69ea3b2a570199bcff7fa8d4"
+    },
+    {
+      "$oid": "69eb47c92fe3ee79570c7bf3"
+    }
+  ],
+  "urlFoto": "https://res.cloudinary.com/dgznikiob/image/upload/v1777472698/mascotas/mhe87cwln29fpw4wjkrt.png",
+  "historialLikes": [
+    {
+      "usuario": {
+        "$oid": "69ea3b2a570199bcff7fa8d4"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:27:32.626Z"
+      },
+      "_id": {
+        "$oid": "69f21554a0a7668b7e1d7e48"
+      }
+    },
+    {
+      "usuario": {
+        "$oid": "69eb47c92fe3ee79570c7bf3"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:33:06.841Z"
+      },
+      "_id": {
+        "$oid": "69f216a2a0a7668b7e1d7ecf"
+      }
+    }
+  ],
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "69ea3b2a570199bcff7fa8d4"
+      },
+      "texto": "que miedo😢",
+      "fecha": {
+        "$date": "2026-04-29T14:27:56.062Z"
+      },
+      "_id": {
+        "$oid": "69f2156ca0a7668b7e1d7e56"
+      }
+    },
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "texto": "es tan pequeño que lo puedes pisar",
+      "fecha": {
+        "$date": "2026-04-29T14:49:13.628Z"
+      },
+      "_id": {
+        "$oid": "69f21a69a0a7668b7e1d82ac"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-04-29T14:24:59.171Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-29T14:49:17.781Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69f214f8a0a7668b7e1d7e29"
+  },
+  "nombre": "nemo",
+  "especie": "pez",
+  "edad": 1,
+  "descripcion": "",
+  "propietario": {
+    "$oid": "69e8decab6f953d62bf536be"
+  },
+  "contadorLikes": 2,
+  "likesDados": [
+    {
+      "$oid": "69ea3b2a570199bcff7fa8d4"
+    },
+    {
+      "$oid": "69e8decab6f953d62bf536be"
+    }
+  ],
+  "urlFoto": "https://res.cloudinary.com/dgznikiob/image/upload/v1777472758/mascotas/iqdza5hitpomvbqnsqgy.jpg",
+  "historialLikes": [
+    {
+      "usuario": {
+        "$oid": "69ea3b2a570199bcff7fa8d4"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:32:15.585Z"
+      },
+      "_id": {
+        "$oid": "69f2166fa0a7668b7e1d7eb0"
+      }
+    },
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:39:41.893Z"
+      },
+      "_id": {
+        "$oid": "69f2182da0a7668b7e1d813a"
+      }
+    }
+  ],
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "69ea3b2a570199bcff7fa8d4"
+      },
+      "texto": "me suena ese pez pero no se de que",
+      "fecha": {
+        "$date": "2026-04-29T14:32:26.137Z"
+      },
+      "_id": {
+        "$oid": "69f2167aa0a7668b7e1d7eb4"
+      }
+    },
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "texto": "el famoso actor de buscando a nemo",
+      "fecha": {
+        "$date": "2026-04-29T14:39:58.849Z"
+      },
+      "_id": {
+        "$oid": "69f2183ea0a7668b7e1d8144"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-04-29T14:26:00.099Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-29T14:39:58.849Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69f215c9a0a7668b7e1d7e84"
+  },
+  "nombre": "Toby",
+  "especie": "perro",
+  "edad": 8,
+  "descripcion": "",
+  "propietario": {
+    "$oid": "69ea3b2a570199bcff7fa8d4"
+  },
+  "contadorLikes": 1,
+  "likesDados": [
+    {
+      "$oid": "69e8decab6f953d62bf536be"
+    }
+  ],
+  "urlFoto": "https://res.cloudinary.com/dgznikiob/image/upload/v1777472968/mascotas/qiipssyoaas1yejofx3u.jpg",
+  "historialLikes": [
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:34:16.112Z"
+      },
+      "_id": {
+        "$oid": "69f216e8a0a7668b7e1d7efa"
+      }
+    }
+  ],
+  "comentarios": [],
+  "createdAt": {
+    "$date": "2026-04-29T14:29:29.547Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-29T14:34:16.112Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69f215ffa0a7668b7e1d7e8f"
+  },
+  "nombre": "Thor",
+  "especie": "perro",
+  "edad": 10,
+  "descripcion": "Era policia",
+  "propietario": {
+    "$oid": "69ea3b2a570199bcff7fa8d4"
+  },
+  "contadorLikes": 1,
+  "likesDados": [
+    {
+      "$oid": "69e8decab6f953d62bf536be"
+    }
+  ],
+  "urlFoto": "https://res.cloudinary.com/dgznikiob/image/upload/v1777473022/mascotas/tj2god2iyr9oz8peszny.jpg",
+  "historialLikes": [
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:34:15.080Z"
+      },
+      "_id": {
+        "$oid": "69f216e7a0a7668b7e1d7ef8"
+      }
+    }
+  ],
+  "comentarios": [],
+  "createdAt": {
+    "$date": "2026-04-29T14:30:23.515Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-29T14:34:15.080Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69f21658a0a7668b7e1d7e9a"
+  },
+  "nombre": "dory",
+  "especie": "pez",
+  "edad": 2,
+  "descripcion": "",
+  "propietario": {
+    "$oid": "69ea3b2a570199bcff7fa8d4"
+  },
+  "contadorLikes": 1,
+  "likesDados": [
+    {
+      "$oid": "69eb47c92fe3ee79570c7bf3"
+    }
+  ],
+  "urlFoto": "https://res.cloudinary.com/dgznikiob/image/upload/v1777473111/mascotas/hfppjvjepgzxqdplowa8.jpg",
+  "historialLikes": [
+    {
+      "usuario": {
+        "$oid": "69eb47c92fe3ee79570c7bf3"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:33:14.855Z"
+      },
+      "_id": {
+        "$oid": "69f216aaa0a7668b7e1d7ed3"
+      }
+    }
+  ],
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "69eb47c92fe3ee79570c7bf3"
+      },
+      "texto": "al fin te encuentro",
+      "fecha": {
+        "$date": "2026-04-29T14:33:25.413Z"
+      },
+      "_id": {
+        "$oid": "69f216b5a0a7668b7e1d7ed7"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-04-29T14:31:52.171Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-29T14:33:25.414Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "69f21665a0a7668b7e1d7ea5"
+  },
+  "nombre": "Roberto",
+  "especie": "pez",
+  "edad": 1,
+  "descripcion": "",
+  "propietario": {
+    "$oid": "69ea3b2a570199bcff7fa8d4"
+  },
+  "contadorLikes": 1,
+  "likesDados": [
+    {
+      "$oid": "69e8decab6f953d62bf536be"
+    }
+  ],
+  "urlFoto": "https://res.cloudinary.com/dgznikiob/image/upload/v1777473124/mascotas/bos6eeoijjzk18shszje.jpg",
+  "historialLikes": [
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "fecha": {
+        "$date": "2026-04-29T14:34:39.193Z"
+      },
+      "_id": {
+        "$oid": "69f216ffa0a7668b7e1d7efc"
+      }
+    }
+  ],
+  "comentarios": [
+    {
+      "usuario": {
+        "$oid": "69e8decab6f953d62bf536be"
+      },
+      "texto": "asi se llama mi primo",
+      "fecha": {
+        "$date": "2026-04-29T14:34:40.585Z"
+      },
+      "_id": {
+        "$oid": "69f21700a0a7668b7e1d7eff"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2026-04-29T14:32:05.712Z"
+  },
+  "updatedAt": {
+    "$date": "2026-04-29T14:34:40.585Z"
+  }
+}]
