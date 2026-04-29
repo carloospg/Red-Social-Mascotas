@@ -48,9 +48,9 @@ export function renderLogin(root: HTMLElement): void {
       sessionStorage.setItem("token", access_token);
       sessionStorage.setItem("user", JSON.stringify(user));
 
-      import("./misMascotas").then(({ renderMisMascotas }) => {
+      import("./todasMascotas").then(({ renderTodasMascotas }) => {
         const app = document.getElementById("app")!;
-        renderMisMascotas(app);
+        renderTodasMascotas(app);
       });
     } catch (error: any) {
       errorMsg.classList.remove("d-none");
