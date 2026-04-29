@@ -7,7 +7,7 @@ const app = document.getElementById('app')!;
 
 const token = sessionStorage.getItem('token');
 if (token) {
-  import('./pages/misMascotas').then(({ renderMisMascotas }) => renderMisMascotas(app));
+  import('./pages/todasMascotas').then(({ renderTodasMascotas }) => renderTodasMascotas(app));
 } else {
   renderLogin(app);
 }

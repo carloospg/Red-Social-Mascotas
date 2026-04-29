@@ -24,6 +24,7 @@ export class MascotasService {
   ): Promise<Mascota> {
     return await this.mascotaModel.create({
       ...createMascotaDto,
+      especie: createMascotaDto.especie.trim().toLowerCase(),
       propietario: user._id,
       urlFoto: urlFoto || "",
     });
@@ -75,6 +76,9 @@ export class MascotasService {
     }
 
     const updateData: any = { ...updateMascotaDto };
+    if (updateData.especie) {
+      updateData.especie = updateData.especie.trim().toLowerCase();
+    }
     if (urlFoto) {
       updateData.urlFoto = urlFoto;
     }
@@ -110,7 +114,8 @@ export class MascotasService {
       throw new NotFoundException("Mascota no encontrada");
     }
 
-    const yaHaDadoLike = mascota.likesDados.some( //some recorre el array y devuelve true si al menos un elemento cumple la condicion, si no la comple devuelve false
+    const yaHaDadoLike = mascota.likesDados.some(
+      //some recorre el array y devuelve true si al menos un elemento cumple la condicion, si no la comple devuelve false
       (userId) => userId.toString() === user._id.toString(),
     );
 
@@ -173,5 +178,21 @@ export class MascotasService {
     }
 
     return mascota.comentarios;
+  }
+
+  async getRanking(especie?: string): Promise<Mascota[]> {
+    const filtro: any = {};
+    if (especie) {
+      filtro.especie = { $regex: especie, $options: "i" }; // Insensible a mayusculas para filtrar bien
+    }
+
+    return await this.mascotaModel
+      .find(filtro)
+      .sort({ contadorLikes: -1 })
+      .populate("propietario", "nombre email");
+  }
+
+  async getEspecies(): Promise<string[]> {
+    return await this.mascotaModel.distinct('especie');
   }
 }

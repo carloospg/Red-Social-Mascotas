@@ -112,6 +112,7 @@ export function renderTodasMascotas(root: HTMLElement): void {
 
   document.getElementById("btn-cerrar-panel")!.addEventListener("click", () => {
     document.getElementById("panel-comentarios")!.style.width = "0";
+    document.getElementById("main-content")!.style.marginRight = "auto";
   });
 
   document
@@ -136,6 +137,19 @@ export function renderTodasMascotas(root: HTMLElement): void {
         );
         input.value = "";
         cargarComentarios(id);
+
+        // Actualizar contador de comentarios en la tarjeta
+        const response = await axios.get(
+          `${API_URL}/mascotas/${id}/comentarios`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          },
+        );
+        const spanComentario = document.querySelector(
+          `[data-comentario-id="${id}"] span`,
+        );
+        if (spanComentario)
+          spanComentario.textContent = String(response.data.length);
       } catch (error: any) {
         alert("Error al enviar el comentario");
       }
@@ -309,7 +323,7 @@ async function cargarTodasMascotas(esAdmin: boolean): Promise<void> {
                 </span>
                 <span class="d-flex align-items-center gap-1" style="cursor: pointer;" data-comentario-id="${m._id}">
                   <i class="bi bi-chat"></i>
-                  <span>${m.comentarios?.length || 0}</span>
+                  <span id="comentarios-count-${m._id}">${m.comentarios?.length || 0}</span>
                 </span>
               </div>
             </div>
@@ -362,14 +376,6 @@ async function cargarTodasMascotas(esAdmin: boolean): Promise<void> {
         cargarComentarios(id);
       });
     });
-
-    // Cerrar panel de comentarios
-    document
-      .getElementById("btn-cerrar-panel")!
-      .addEventListener("click", () => {
-        document.getElementById("panel-comentarios")!.style.width = "0";
-        document.getElementById("main-content")!.style.marginRight = "auto";
-      });
 
     if (esAdmin) {
       document.querySelectorAll(".btn-editar-mascota").forEach((btn) => {

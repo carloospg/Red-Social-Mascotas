@@ -10,6 +10,7 @@ import {
   UseInterceptors,
   Patch,
   Delete,
+  Query,
 } from "@nestjs/common";
 import { MascotasService } from "./mascotas.service";
 import { CreateMascotaDto } from "./dto/create-mascota.dto";
@@ -51,6 +52,21 @@ export class MascotasController {
     return this.mascotasService.findByPropietario(req.user._id);
   }
 
+  @Get("ranking")
+  async getRanking(@Query("especie") especie?: string) {
+    return this.mascotasService.getRanking(especie);
+  }
+
+  @Get("especies")
+  async getEspecies() {
+    return this.mascotasService.getEspecies();
+  }
+
+  @Get(":id/comentarios")
+  async getComentarios(@Param("id") id: string) {
+    return this.mascotasService.getComentarios(id);
+  }
+
   @Get(":id")
   async findOne(@Param("id") id: string) {
     return this.mascotasService.findOne(id);
@@ -88,10 +104,5 @@ export class MascotasController {
     @Request() req: any,
   ) {
     return this.mascotasService.comentar(id, texto, req.user);
-  }
-
-  @Get(":id/comentarios")
-  async getComentarios(@Param("id") id: string) {
-    return this.mascotasService.getComentarios(id);
   }
 }
